@@ -31,9 +31,12 @@ namespace WebPractice
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             //Agregamos el servicio identity a la aplicación
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddControllersWithViews();
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,11 +61,19 @@ namespace WebPractice
             app.UseAuthentication();
             app.UseAuthorization();
 
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+            //});
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

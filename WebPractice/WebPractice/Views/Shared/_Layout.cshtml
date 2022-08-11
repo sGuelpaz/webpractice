@@ -14,13 +14,14 @@
         <partial name="_Navbar" />
         <partial name="_Sidebar" />
 
-        @RenderBody();
+        @RenderBody()
 
         <partial name="_Footer" />
         <partial name="_Script" />
     </div>
 
     @await RenderSectionAsync("Scripts", required: false) 
+   
     <!--<header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
             <div class="container">
