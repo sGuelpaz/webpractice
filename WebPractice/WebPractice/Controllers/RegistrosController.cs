@@ -40,6 +40,11 @@ namespace WebPractice.Controllers
             return View(await _context.Registro.ToListAsync());
         }
 
+        public async Task<IActionResult> Disableds()
+        {
+            return View(await _context.Registro.ToListAsync());
+        }
+
         // GET: Registros/Details/5
         public async Task<IActionResult> Details(int? id)
         {

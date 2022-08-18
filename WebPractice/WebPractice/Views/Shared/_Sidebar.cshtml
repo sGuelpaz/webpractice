@@ -1,13 +1,25 @@
-﻿
-<!-- Main Sidebar Container -->
+﻿<!-- Main Sidebar Container -->
 @*<aside class="main-sidebar sidebar-dark-orange elevation-4">*@
+
 <aside class="main-sidebar sidebar-light-cyan elevation-3">
     <!-- Brand Logo -->
-    <a href="~/Home/Index" class="brand-link " style="background-color: #343A40">
-        <img src="~/Img/Yo.jpg" class="brand-image img-circle elevation-3">
-        <span class="brand-text text-white font-weight-light">Administrador</span>
-    </a>
-
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Admin") || User.IsInRole("SuperUsuario"))
+        {
+            <a href="~/Home/Index" class="brand-link " style="background-color: #343A40">
+                <img src="~/Img/Yo.jpg" class="brand-image img-circle elevation-3">
+                <span class="brand-text text-white font-weight-light">Administrador</span>
+            </a>
+        }
+    }
+    else
+    {
+        <a href="~/Home/Index" class="brand-link " style="background-color: #343A40">
+            <img src="~/Img/userDefault.png" class="brand-image img-circle elevation-3">
+            <span class="brand-text text-white font-weight-light">Bienvenido</span>
+        </a>
+    }
     <!-- Sidebar -->
     <div class="sidebar">
 
@@ -15,87 +27,94 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                @*@if (User.Identity.IsAuthenticated)
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Admin") || User.IsInRole("SuperUsuario"))
                     {
-                        if (User.IsInRole("Control") || User.IsInRole("Admin"))
-                        {*@
+                        <li class="nav-item menu-open">
+                            <a href="~/Identity/Account/Manage/Index" class="nav-link active" style="background-color: #343A40">
+                                <i class="far fa-folder"></i>
+                                <p>
+                                    Datos Personales
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+
+
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="~/Registros/Index" class="nav-link active">
+                                        <img width="30" src="~/Img/registros.png">
+                                        <p>Registros</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="~/Registros/Disableds" class="nav-link active">
+                                        <img width="30" src="~/Img/registros.png">
+                                        <p>Registros inactivos</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    }
+                }
+
+
+                @*//if (User.IsInRole("Admin"))
+                    //{*@
                 <li class="nav-item menu-open">
-                    <a href="~/Identity/Account/Manage/Index" class="nav-link active" style="background-color: #343A40">
+                    <a href="#" class="nav-link active" style="background-color: #343A40">
                         <i class="far fa-folder"></i>
                         <p>
-                            Datos Personales
+                            Control Administrativo
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
 
-                        <li class="nav-item">
-                            <a href="~/Registros/Index" class="nav-link active">
-                                <img width="30" src="~/Img/registros.png">
-                                <p>Registro</p>
-                            </a>
-                        </li>
+
+                    <ul class="nav nav-treeview">
+                        @if (User.IsInRole("SuperUsuario"))
+                        {
+                            <li class="nav-item">
+                                <a href="~/Identity/Account/Manage/Index" class="nav-link active">
+                                    <img width="30" src="~/Img/datos-personales.png">
+                                    <p>Datos personales</p>
+                                </a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole("Admin") || User.IsInRole("SuperUsuario"))
+                        {
+                            <li class="nav-item">
+                                <a href="~/Role/DisplayRoles" class="nav-link active">
+                                    <img width="30" src="~/Img/crear-roles.png">
+                                    <p>Crear Roles</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="~/Role/AddUserToRole" class="nav-link active">
+                                    <img width="30" src="~/Img/asignar_roles.png">
+                                    <p>Asignar Roles</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="~/Role/Index" class="nav-link active">
+                                    <img width="30" src="~/Img/usuarios.png">
+                                    <p>Usuarios</p>
+                                </a>
+                            </li>
+                        }
+
                     </ul>
                 </li>
-                @*}
-                }*@
+                @*//}*@
+                @*}*@
 
-                @if (User.Identity.IsAuthenticated)
-                {
-                    //if (User.IsInRole("Admin"))
-                    //{
-                    <li class="nav-item menu-open">
-                        <a href="#" class="nav-link active" style="background-color: #343A40">
-                            <i class="far fa-folder"></i>
-                            <p>
-                                Control Adiministrativo
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            @if (User.IsInRole("SuperUsuario"))
-                            {
-                                <li class="nav-item">
-                                    <a href="~/Identity/Account/Manage/Index" class="nav-link active">
-                                        <img width="30" src="~/Img/datos-personales.png">
-                                        <p>Datos personales</p>
-                                    </a>
-                                </li>
-                                }
-
-                            @if (User.IsInRole("Admin") || User.IsInRole("SuperUsuario"))
-                            {
-                                <li class="nav-item">
-                                    <a href="~/Role/DisplayRoles" class="nav-link active">
-                                        <img width="30" src="~/Img/crear-roles.png">
-                                        <p>Crear Roles</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="~/Role/AddUserToRole" class="nav-link active">
-                                        <img width="30" src="~/Img/asignar_roles.png">
-                                        <p>Asignar Roles</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="~/Role/Index" class="nav-link active">
-                                        <img width="30" src="~/Img/usuarios.png">
-                                        <p>Usuarios</p>
-                                    </a>
-                                </li>
-                            }
-
-                        </ul>
-                    </li>
-                    //}
-                }
-
-                @*@if (User.Identity.IsAuthenticated)
-                    {
-                        if (User.IsInRole("Admin") || User.IsInRole("Invitado"))
-                        {*@
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link active" style="background-color: #343A40">
                         <i class="far fa-folder"></i>
@@ -104,27 +123,44 @@
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="~/Registros/Imprimir" class="nav-link active" target="_blank">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="~/Registros/Imprimir" class="nav-link active" target="_blank">
 
-                                <img width="30" src="~/Img/reportes.png">
-                                <p>Reportes</p>
-                            </a>
-                        </li>
+                                        <img width="30" src="~/Img/reportes.png">
+                                        <p>Reportes</p>
+                                    </a>
+                                </li>
 
-                        <li class="nav-item">
-                            <a href="~/Registros/DescargarPDF" class="nav-link active">
-                                <img width="30" src="~/Img/reportes_pdf.png">
-                                <p>Reportes Pdf</p>
-                            </a>
-                        </li>
-                    </ul>
+                                <li class="nav-item">
+                                    <a href="~/Registros/DescargarPDF" class="nav-link active">
+                                        <img width="30" src="~/Img/reportes_pdf.png">
+                                        <p>Reportes Pdf</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="" class="nav-link active pl-1">
+                                        <img width="45" src="~/Img/ReportesExcel.png">
+                                        <p>Reportes Excel</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="" class="nav-link active">
+                                        <img width="30" src="~/Img/reportes_pdf.png">
+                                        <p>Reportes HTML/Pdf</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        }
+                    }
                 </li>
-                @*}
-                }*@
-
-            </ul>
         </nav>
         <!-- /.sidebar-menu -->
     </div>

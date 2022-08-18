@@ -738,3 +738,4 @@ C:\Users\SENA\Documents\Team4\JF\webpractice\WebPractice\WebPractice\obj\Debug\n
 C:\Users\SENA\Documents\Team4\JF\webpractice\WebPractice\WebPractice\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\SENA\Documents\Team4\JF\webpractice\WebPractice\WebPractice\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\SENA\Documents\Team4\JF\webpractice\WebPractice\WebPractice\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\SENA\Documents\Team4\JF\webpractice\WebPractice\WebPractice\obj\Debug\net5.0\Razor\Views\Registros\Disableds.cshtml.g.cs

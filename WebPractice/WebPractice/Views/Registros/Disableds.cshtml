@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WebPractice.Models.Registros>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Disableds";
 }
 
 <div class="content-wrapper">
@@ -59,7 +59,7 @@
 
             @foreach (var item in Model)
             {
-                @if (item.Estado != "I")
+                @if (item.Estado != "A")
                 {
                     <tr>
                         <td>
