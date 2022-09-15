@@ -62,11 +62,21 @@ namespace WebPractice.Models
         [DisplayName("Salario")]
         [DataType(DataType.Currency)]
         [Required(ErrorMessage = "Dato requerido")]
-        public decimal Sueldo { get; set; }
+        public int Sueldo { get; set; }
         [DisplayName("Estado")]
         [StringLength(1)]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Dato requerido")]
         public string Estado { get; set; }
+        [DisplayName("Fecha Registro")]
+        [DataType(DataType.DateTime)]
+        [Required(ErrorMessage = "Fecha requerida")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode
+       = false)]
+        public DateTime FechaReg { get; set; }
+        [DisplayName("Edad")]
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "Edad requerida")]
+        public int Edad { get; set; }
     }
 }

@@ -75,11 +75,18 @@
                         <span asp-validation-for="FechaNac" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="Direccion" class="control-label"></label>
                         <input asp-for="Direccion" class="form-control" />
                         <span asp-validation-for="Direccion" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Edad" class="control-label"></label>
+                        <input asp-for="Edad" class="form-control" />
+                        <span asp-validation-for="Edad" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -146,6 +153,13 @@
                             <option value="I">Ináctivo</option>
                         </select>
                         <span asp-validation-for="Estado" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="FechaReg" class="control-label"></label>
+                        <input type="date" asp-for="FechaReg" class="form-control" />
+                        <span asp-validation-for="FechaReg" class="text-danger"></span>
                     </div>
                 </div>
             </div>

@@ -75,7 +75,7 @@ namespace WebPractice.Controllers
          [HttpPost]
          [ValidateAntiForgeryToken]
         public async Task<IActionResult>
-        Create([Bind("IdRegistro,Imagen,Documento,Nombre,Apellidos,FechaNac,Direccion,Celular,Genero,Deporte,Trabaja,Sueldo,Estado")] Registros registros, IFormFile ImageFile)
+        Create([Bind("IdRegistro,Imagen,Documento,Nombre,Apellidos,FechaNac,Direccion,Edad,Celular,Genero,Deporte,Trabaja,Sueldo,Estado,FechaReg")] Registros registros, IFormFile ImageFile)
         {
             //if (ModelState.IsValid)
             if (ImageFile != null && ImageFile.Length > 0)
@@ -111,7 +111,7 @@ namespace WebPractice.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdRegistro,Imagen,Documento,Nombre,Apellidos,FechaNac,Direccion,Celular,Genero,Deporte,Trabaja,Sueldo,Estado")] Registros registros)
+        public async Task<IActionResult> Edit(int id, [Bind("IdRegistro,Imagen,Documento,Nombre,Apellidos,FechaNac,Direccion,Edad,Celular,Genero,Deporte,Trabaja,Sueldo,Estado,FechaReg")] Registros registros)
         {
             if (id != registros.IdRegistro)
             {
