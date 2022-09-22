@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -71,11 +72,11 @@ namespace WebPractice.Controllers
 
         // POST: Registros/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
-         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-         [HttpPost]
-         [ValidateAntiForgeryToken]
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult>
-        Create([Bind("IdRegistro,Imagen,Documento,Nombre,Apellidos,FechaNac,Direccion,Edad,Celular,Genero,Deporte,Trabaja,Sueldo,Estado,FechaReg")] Registros registros, IFormFile ImageFile)
+       Create([Bind("IdRegistro,Imagen,Documento,Nombre,Apellidos,FechaNac,Direccion,Edad,Celular,Genero,Deporte,Trabaja,Sueldo,Estado,FechaReg")] Registros registros, IFormFile ImageFile)
         {
             //if (ModelState.IsValid)
             if (ImageFile != null && ImageFile.Length > 0)
@@ -263,5 +264,44 @@ namespace WebPractice.Controllers
             //return File(pdf, mimetype);
         }
 
+        public ActionResult Graficas()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public JsonResult DatosPersonas()
+        {
+            List<Registros> objLista = new List<Registros>();
+            var conn = _context.Database.GetDbConnection();
+            try
+            {
+                using (var command = conn.CreateCommand())
+                {
+                    conn.Open();
+                    string query1 = "Select Nombre,edad From Registro";
+                    command.CommandText = query1;
+                    DbDataReader reader1 = command.ExecuteReader();
+                    while (reader1.Read())
+                        {
+                        objLista.Add(new Registros()
+                        {
+                            Nombre = reader1["Nombre"].ToString(),
+                            Edad = int.Parse(reader1["Edad"].ToString()),
+                        });
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception e1)
+            {
+                string error = e1.ToString();
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return Json(objLista);
+        }
     }
 }

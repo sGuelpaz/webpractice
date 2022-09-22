@@ -127,37 +127,44 @@
                     {
                         if (User.IsInRole("Admin"))
                         {
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="~/Registros/Imprimir" class="nav-link active" target="_blank">
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="~/Registros/Imprimir" class="nav-link active" target="_blank">
 
-                                        <img width="30" src="~/Img/reportes.png">
-                                        <p>Reportes</p>
-                                    </a>
-                                </li>
+                            <img width="30" src="~/Img/reportes.png">
+                            <p>Reportes</p>
+                        </a>
+                    </li>
 
-                                <li class="nav-item">
-                                    <a href="~/Registros/DescargarPDF" class="nav-link active">
-                                        <img width="30" src="~/Img/reportes_pdf.png">
-                                        <p>Reportes Pdf</p>
-                                    </a>
-                                </li>
+                    <li class="nav-item">
+                        <a href="~/Registros/DescargarPDF" class="nav-link active">
+                            <img width="30" src="~/Img/reportes_pdf.png">
+                            <p>Reportes Pdf</p>
+                        </a>
+                    </li>
 
-                                <li class="nav-item">
-                                    <a href="~/Home/Exportar_excel" class="nav-link active pl-1">
-                                        <img width="45" src="~/Img/ReportesExcel.png">
-                                        <p>Reportes Excel</p>
-                                    </a>
-                                </li>
+                    <li class="nav-item">
+                        <a href="~/Home/Exportar_excel" class="nav-link active pl-1">
+                            <img width="45" src="~/Img/ReportesExcel.png">
+                            <p>Reportes Excel</p>
+                        </a>
+                    </li>
 
-                                <li class="nav-item">
-                                    <a href="" class="nav-link active">
-                                        <img width="30" src="~/Img/reportes_pdf.png">
-                                        <p>Reportes HTML/Pdf</p>
-                                    </a>
-                                </li>
+                    @*<li class="nav-item">
+                        <a href="" class="nav-link active">
+                            <img width="30" src="~/Img/reportes_pdf.png">
+                            <p>Reportes HTML/Pdf</p>
+                        </a>
+                    </li>*@
 
-                            </ul>
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-area="" asp-controller="Registros" asp-action="Graficas">
+                            <img width="30" src="~/Img/graficos.png">
+                            <p>Estadistica</p>
+                        </a>
+                    </li>
+
+                </ul>
                         }
                     }
                 </li>
