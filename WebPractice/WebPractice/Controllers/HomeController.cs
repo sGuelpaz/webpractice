@@ -30,8 +30,11 @@ namespace WebPractice.Controllers
             return View();
         }
 
-        public IActionResult Exportar_excel()
+        public IActionResult Exportar_excel(DateTime fechaInicial, DateTime fechaFinal)
         {
+            string fe1 = fechaInicial.ToShortDateString();
+            string fe2 = fechaFinal.ToShortDateString();
+
             DataTable tabla_usuario = new DataTable();
 
             using (var conexion = new SqlConnection(DefaultConnection))
@@ -39,9 +42,10 @@ namespace WebPractice.Controllers
                 conexion.Open();
                 using (var adapter = new SqlDataAdapter())
                 {
-                    adapter.SelectCommand = new SqlCommand("sp_reporte_usuario", conexion);
+                    adapter.SelectCommand = new SqlCommand("sp_reporte_cliente4", conexion);
                     adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-
+                    adapter.SelectCommand.Parameters.AddWithValue("@FechaInicio", fe1);
+                    adapter.SelectCommand.Parameters.AddWithValue("@FechaFin", fe2);
                     adapter.Fill(tabla_usuario);
                 }
             }

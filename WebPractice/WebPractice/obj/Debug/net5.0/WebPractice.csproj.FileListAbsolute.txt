@@ -962,3 +962,4 @@ C:\Users\SENA\Documents\Team4\webpractice\WebPractice\WebPractice\obj\Debug\net5
 C:\Users\SENA\Documents\Team4\webpractice\WebPractice\WebPractice\obj\Debug\net5.0\WebPractice.pdb
 C:\Users\SENA\Documents\Team4\webpractice\WebPractice\WebPractice\obj\Debug\net5.0\WebPractice.genruntimeconfig.cache
 C:\Users\SENA\Documents\Team4\JF\webpractice\WebPractice\WebPractice\obj\Debug\net5.0\Razor\Views\Registros\Graficas.cshtml.g.cs
+C:\Users\SENA\Documents\Team4\JF\webpractice\WebPractice\WebPractice\obj\Debug\net5.0\Razor\Views\Registros\FechasReporte.cshtml.g.cs

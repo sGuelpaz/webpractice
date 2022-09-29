@@ -31,8 +31,7 @@ namespace WebPractice.Models
         [DisplayName("Fecha Nacimiento")]
         [DataType(DataType.DateTime)]
         [Required(ErrorMessage = "Fecha requerida")]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode
-       = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = false)]
         public DateTime FechaNac { get; set; }
         [DisplayName("Dirección")]
         [StringLength(100)]
@@ -71,8 +70,7 @@ namespace WebPractice.Models
         [DisplayName("Fecha Registro")]
         [DataType(DataType.DateTime)]
         [Required(ErrorMessage = "Fecha requerida")]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode
-       = false)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = false)]
         public DateTime FechaReg { get; set; }
         [DisplayName("Edad")]
         [DataType(DataType.Text)]
